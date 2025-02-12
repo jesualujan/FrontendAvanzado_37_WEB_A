@@ -7,11 +7,11 @@ const Home = () => {
     <SongProvider>
     <div className='home-container'>
       <div className='left'>
-        <p>lado zquierdo</p>
+        <p>Song List</p>
         <SongList />
       </div>
       <div className='right'>
-        <p>lado Derecho</p>
+        <p>Song Detail</p>
         <SongDetail />
       </div>
     </div>
