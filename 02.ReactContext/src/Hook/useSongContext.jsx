@@ -10,8 +10,8 @@ export const useSongContext = () => {
     const context = useContext(SongContext) // quiero usar mi contexto y esto lo guardo en context
 
     // si no hay contexto, si es un undefined (vacío), lanzo un error
-   if(!context){
+    if(!context){
         throw new Error('useSongContext  debe ser usado dentro de SongProvider')
-    } 
+    }
     return context
 }
