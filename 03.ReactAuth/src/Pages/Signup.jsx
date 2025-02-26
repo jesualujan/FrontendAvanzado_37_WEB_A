@@ -1,4 +1,5 @@
 import reactLogo from '../../src/assets/react.svg'
+import '@/styles/form.css'
 
 const Signup = () => {
   return (
@@ -76,7 +77,7 @@ const Signup = () => {
           <label htmlFor='password'>Password</label>
         </div>
 
-        <button className='w-100 btn btn-lg btn-primary' type='submit'>Sign up</button>
+        <button className='w-100 btn btn-outline-primary' type='submit'>Sign up</button>
         <p className='mt-5 mb-3 text-muted'>© 2017–2025</p>
       </form>
     </main>

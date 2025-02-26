@@ -1,4 +1,5 @@
 import reactLogo from '../../src/assets/react.svg'
+import '@/styles/form.css'
 
 const Login = () => {
   return (
@@ -33,7 +34,7 @@ const Login = () => {
           <label htmlFor='floatingPassword'>Password</label>
         </div>
 
-        <button className='btn btn-primary w-100 py-2' type='submit'>
+        <button className='btn btn-outline-primary w-100 py-2' type='submit'>
           Sign in
         </button>
         <p className='mt-5 mb-3 text-body-secondary'>© 2017–2025</p>
