@@ -1,12 +1,32 @@
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { loginUserService } from '@/Service/userService'
 import reactLogo from '../../src/assets/react.svg'
 import '@/styles/form.css'
 
 const Login = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate(); // hook - react-router-dom redirigir a un usuario a diferentes rutas de la aplicación
+  
+  const onSubmit = (data) => {
+    try{
+     const response = loginUserService(data);
+     if(response.status === 200){
+      navigate('/')
+      // console.log(response)
+      console.log('Usuario autenticado exitosamente')
+     }
+    }
+    catch(error){
+      console.log('Ocurrio un error en Login', error)
+    }
+  }
+
   return (
     <>
     <h1>Login</h1>
     <main className='form-signin w-100 m-auto'>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <img
           className='mb-4'
           src={reactLogo}
@@ -21,7 +41,9 @@ const Login = () => {
             className='form-control'
             id='floatingInput'
             placeholder='name@example.com'
+            {...register('email')}
           />
+            <p>{errors.email?.message}</p>
           <label htmlFor='floatingInput'>Email address</label>
         </div>
         <div className='form-floating'>
@@ -30,7 +52,9 @@ const Login = () => {
             className='form-control'
             id='floatingPassword'
             placeholder='Password'
+            {...register('password')}
           />
+             <p>{errors.password?.message}</p>
           <label htmlFor='floatingPassword'>Password</label>
         </div>
 
