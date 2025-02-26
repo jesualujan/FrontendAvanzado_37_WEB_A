@@ -8,9 +8,9 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate(); // hook - react-router-dom redirigir a un usuario a diferentes rutas de la aplicación
   
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try{
-     const response = loginUserService(data);
+     const response = await loginUserService(data);
      if(response.status === 200){
       navigate('/')
       // console.log(response)
