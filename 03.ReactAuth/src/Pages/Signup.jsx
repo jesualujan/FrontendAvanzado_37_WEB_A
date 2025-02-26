@@ -1,12 +1,32 @@
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { registerUserService } from '@/Service/userService'
 import reactLogo from '../../src/assets/react.svg'
 import '@/styles/form.css'
 
 const Signup = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate(); // hook - react-router-dom redirigir a un usuario a diferentes rutas de la aplicación
+  
+  const onSubmit = async (data) => {
+    try{
+     const response = await registerUserService(data);
+     if(response.status === 201){
+      navigate('/login')
+      // console.log(response)
+      console.log('Usuario creado exitosamente')
+     }
+    }
+    catch(error){
+      console.log('Ocurrio un error en Signup', error)
+    }
+  }
+
   return (
    <> 
      <h1>Signup</h1>
     <main className='form-signin w-100 m-auto'>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <img className='mb-4' src={reactLogo} alt='' width='72' height='57' />
         <h1 className='h3 mb-3 fw-normal'>Please sign up</h1>
 
@@ -19,7 +39,9 @@ const Signup = () => {
             value=''
             onChange={() => {}}
             placeholder='John'
+            {...register('first_name')}
           />
+          <p>{errors.first_name?.message}</p>
           <label htmlFor='first_name'>First Name</label>
         </div>
 
@@ -32,7 +54,9 @@ const Signup = () => {
             value=''
             onChange={() => {}}
             placeholder='Doe'
+            {...register('last_name')}
           />
+          <p>{errors.last_name?.message}</p>
           <label htmlFor='last_name'>Last Name</label>
         </div>
 
@@ -43,11 +67,13 @@ const Signup = () => {
             name='gender'
             value=''
             onChange={() => {}}
+            {...register('gender')}
           >
             <option value=''>Choose...</option>
             <option value='M'>Male</option>
             <option value='F'>Female</option>
           </select>
+          <p>{errors.gender?.message}</p>
           <label htmlFor='gender'>Gender</label>
         </div>
 
@@ -60,7 +86,9 @@ const Signup = () => {
             value=''
             onChange={() => {}}
             placeholder='name@example.com'
+            {...register('email')}
           />
+          <p>{errors.email?.message}</p>
           <label htmlFor='email'>Email address</label>
         </div>
 
@@ -73,7 +101,9 @@ const Signup = () => {
             value=''
             onChange={() => {}}
             placeholder='Password'
+            {...register('password')}
           />
+          <p>{errors.password?.message}</p>
           <label htmlFor='password'>Password</label>
         </div>
 
