@@ -26,7 +26,7 @@ const Signup = () => {
      <h1>Signup</h1>
     <main className='form-signin w-100 m-auto'>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <img className='mb-4' src={reactLogo} alt='' width='72' height='57' />
+        <img className='mb-4 img' src={reactLogo} alt='' width='72' height='57' />
         <h1 className='h3 mb-3 fw-normal'>Please sign up</h1>
 
         <div className='form-floating'>
