@@ -1,12 +1,14 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { loginUserService } from '@/Service/userService'
+import { useAuthContext } from '@/Hook/useAuthContext'
 import reactLogo from '../../src/assets/react.svg'
 import '@/styles/form.css'
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate(); // hook - react-router-dom redirigir a un usuario a diferentes rutas de la aplicación
+  const { login } = useAuthContext();  
   
   const onSubmit = async (data) => {
     try{
@@ -15,6 +17,7 @@ const Login = () => {
       navigate('/')
       // console.log(response)
       console.log('Usuario autenticado exitosamente')
+      login(response.data.token) // utilizar el login del contexto y decodificar el token en el navegador
      }
     }
     catch(error){
