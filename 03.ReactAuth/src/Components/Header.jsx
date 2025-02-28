@@ -14,10 +14,10 @@ const Header = () => {
      {/* BEM PARA NUESTRAS CLASES EN HTML */}
      {/* kebabcase para nombrar nuestras className en React con minúsculas */}
       <nav className="header"> {/* BLOQUE */}
-        <NavLink className="header__logo" to="/">LOGO</NavLink>
+        <NavLink className="header__logo">LOGO</NavLink>
         <ul className="header__nav-list" />
         <li className="header__list-item">
-            <NavLink className={({ isActive }) => linkIsActive(isActive)} to="/home">Home</NavLink>
+            <NavLink className={({ isActive }) => linkIsActive(isActive)} to="/">Home</NavLink>
         </li>
         <li className="header__list-item">
             <NavLink className={({ isActive }) => linkIsActive(isActive)} to="/dashboard">Dashboard</NavLink>
